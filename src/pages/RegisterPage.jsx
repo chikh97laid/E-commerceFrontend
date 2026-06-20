@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
 import { FaUser, FaLock, FaEnvelope, FaPhone, FaUserPlus } from "react-icons/fa";
+import API_URL from "../services/API_URL.jsx"; // استيراد رابط الـ API من ملف منفصل
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const RegisterPage = () => {
 
     try {
       setLoading(true);
-      const res = await fetch("/api/Accounts/Register", {
+      const res = await fetch(`${API_URL}/api/Accounts/Register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

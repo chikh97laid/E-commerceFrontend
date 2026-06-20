@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { FaUser, FaLock, FaSignInAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../services/API_URL.jsx"; // استيراد رابط الـ API من ملف منفصل
 
 const LoginPage = ({ loggingIn }) => {
   // الحقول المطلوبة بناءً على السواجر الخاص بك
@@ -25,7 +26,7 @@ const LoginPage = ({ loggingIn }) => {
 
     try {
       setLoading(true);
-      const res = await fetch("/api/Accounts/Login", {
+      const res = await fetch(`${API_URL}/api/Accounts/Login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json", // الباك إند يقبل json

@@ -1,8 +1,10 @@
+import API_URL from "./API_URL.jsx"; // استيراد رابط الـ API من ملف منفصل
+
 // Function to fetch orders
 const Orders = async () => {
   const token = localStorage.getItem("token");
 
-  const response = await fetch("/api/orders", {
+  const response = await fetch(`${API_URL}/api/orders`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

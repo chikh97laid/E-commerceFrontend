@@ -37,6 +37,9 @@ import "react-toastify/dist/ReactToastify.css";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 import { clearUserSession } from "./utils/clearUserSession.js";
+import API_URL from "./services/API_URL.jsx"; // استيراد رابط الـ API من ملف منفصل
+
+
 
 // Add function
 // دالة الإضافة (Add)
@@ -66,7 +69,7 @@ const addTarget = async (data, name) => {
       options.body = JSON.stringify(data);
     }
 
-    const res = await fetch(`/api/${name}`, options);
+    const res = await fetch(`${API_URL}/api/${name}`, options);
     if (!res.ok) {
       const errorData = await res.json().catch(() => ({}));
       throw new Error(errorData.message || "Server responded with an error");
@@ -104,7 +107,7 @@ const updateTarget = async (data, name, options = {}) => {
       body = JSON.stringify(data);
     }
 
-    const res = await fetch(`/api/${name}/${data.id}`, {
+    const res = await fetch(`${API_URL}/api/${name}/${data.id}`, {
       method: "PUT",
       headers, // تمرير الهيدرز التي تحتوي على التوكن والنوع
       body,
@@ -127,7 +130,7 @@ const deleteTarget = async (ids, name) => {
   const token = localStorage.getItem("token"); // جلب التوكن
   try {
     const isSingle = ids.length === 1;
-    const url = isSingle ? `/api/${name}/${ids[0]}` : `/api/${name}`;
+    const url = isSingle ? `${API_URL}/api/${name}/${ids[0]}` : `${API_URL} /api/${name}`;
 
     const options = {
       method: "DELETE",
@@ -157,7 +160,7 @@ const deleteTarget = async (ids, name) => {
 const confirmPayment = async (id) => {
   const token = localStorage.getItem("token"); // جلب التوكن
   try {
-    const res = await fetch(`/api/payments/${id}/confirm`, {
+    const res = await fetch(`${API_URL}/api/payments/${id}/confirm`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`, // لا تترك الفيتش بدون توكن للأدمن
@@ -180,7 +183,7 @@ const confirmPayment = async (id) => {
 const UpdateShippingStatus = async (id, status) => {
   const token = localStorage.getItem("token"); // جلب التوكن
   try {
-    const res = await fetch(`/api/shippings/${id}/status?Status=${status}`, {
+    const res = await fetch(`${API_URL}/api/shippings/${id}/status?Status=${status}`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`, // حماية الـ Patch المسؤول عن الشحن

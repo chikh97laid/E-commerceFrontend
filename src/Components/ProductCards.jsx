@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import Spinner from "./Spinner";
 import { Link } from "react-router-dom";
+import API_URL from "../services/API_URL.jsx"; // استيراد رابط الـ API من ملف منفصل
 
 const ProductCards = ({ isHome = false }) => {
   const [products, setProducts] = useState([]);
@@ -9,7 +10,7 @@ const ProductCards = ({ isHome = false }) => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const apiUrl = "/api/items";
+      const apiUrl = `${API_URL}/api/items`; // استخدم رابط الـ API من ملف منفصل
 
       try {
         const res = await fetch(apiUrl);

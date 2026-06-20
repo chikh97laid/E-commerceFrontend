@@ -6,6 +6,7 @@ import "../App.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import {clearUserSession} from "../utils/clearUserSession.js";
+import API_URL from "../services/API_URL.jsx"; // استيراد رابط الـ API من ملف منفصل
 
 const NavBar = ({ islogIn, loggingIn }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,7 +17,7 @@ const NavBar = ({ islogIn, loggingIn }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch("/api/categories");
+        const res = await fetch(`${API_URL}/api/categories`); // استخدم رابط الـ API من ملف منفصل
         const data = await res.json();
         setCategories(data);
       } catch (error) {

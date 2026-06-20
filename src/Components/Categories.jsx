@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Spinner from "./Spinner";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../services/API_URL.jsx"; // استيراد رابط الـ API من ملف منفصل
 
 const Categories = () => {
   const [cats, setcats] = useState([]);
@@ -17,7 +18,7 @@ const Categories = () => {
 
   useEffect(() => {
     const fetchCats = async () => {
-      const apiUrl = "/api/categories";
+      const apiUrl = `${API_URL}/api/categories`; // استخدم رابط الـ API من ملف منفصل
 
       try {
         const res = await fetch(apiUrl);
