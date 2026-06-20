@@ -48,7 +48,6 @@ The project follows professional front-end architecture and clean code principle
 ## 🔐 Authentication & Authorization
 
 - JWT Authentication.
-- Automatic token injection using Axios interceptors.
 - Secure session management.
 - Protected routes.
 - Role-Based Access Control (RBAC).
@@ -96,7 +95,7 @@ src/
 ├── layouts/         # Global Layouts
 ├── pages/           # Application Pages
 ├── routes/          # Router, Loaders & Protected Routes
-├── services/        # Axios & API Services
+├── services/        # API Services
 └── App.jsx          # Application Entry
 ```
 
@@ -173,7 +172,6 @@ InfoBook-Backend
 - ✅ React Router Loaders
 - ✅ JWT Authentication
 - ✅ Role-Based Authorization
-- ✅ Axios Interceptors
 - ✅ Tailwind CSS
 - ✅ Responsive Design
 - ✅ Clean Code
